@@ -281,10 +281,16 @@
                 checkIcon.src = i.url;
             })
 
+        // AJOUTS ANTOINE 2025-05-27
+        d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSGibgIPvVZ1mpeAzPMEKOixlbJSozIgq1QUy8NycJDZFCQLM29EXWbYDKbqwXtV_mncF0v_nJNJ0TX/pub?gid=0&single=true&output=csv')
+            .then(data => {
+        ready(data);
+        })
+            .catch(error => {
+        console.error("Erreur de chargement du CSV :", error);
+        alert("Impossible de charger les points de vente. Vérifie que le fichier Google Sheets est toujours en ligne.");
+        });
 
-            d3.csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vSGibgIPvVZ1mpeAzPMEKOixlbJSozIgq1QUy8NycJDZFCQLM29EXWbYDKbqwXtV_mncF0v_nJNJ0TX/pub?gid=0&single=true&output=csv').then(data => {
-                ready(data)
-            })
 
             map.addSource('pins', {
                 "type": "geojson",
